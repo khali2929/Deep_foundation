@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دیپ ویلفیئر فاؤنڈیشن | خدمت انسانیت</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* بنیادی سیٹنگز */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        
+        :root {
+            --primary: #2c6e49;
+            --secondary: #4c956c;
+            --accent: #fefee3;
+            --light: #f9f9f9;
+            --dark: #1a1a1a;
+            --text: #333333;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* ہیڈر سٹائلز */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            color: #ffd166;
+        }
+        
+        .logo-text {
+            text-align: center;
+        }
+        
+        .logo-text h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* نیویگیشن */
+        nav {
+            background-color: var(--primary);
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* ہیرو سیکشن */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            padding: 4rem 1rem;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        /* سیکشن عام */
+        .section {
+            padding: 4rem 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        /* مشن سیکشن */
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .mission-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .mission-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .mission-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* ڈونیشن سیکشن */
+        .donation {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .donation-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .donation-option {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            min-width: 250px;
+        }
+        
+        .donation-option h3 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        /* آن لائن شاپنگ سیکشن */
+        .shopping {
+            background-color: var(--light);
+        }
+        
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .store-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .store-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .store-logo {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* گیلری سیکشن */
+        .gallery {
+            background-color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-weight: bold;
+        }
+        
+        /* بلاگ سیکشن */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        /* ہوروسکوپ سیکشن */
+        .horoscope-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .lang-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .horoscope-content {
+            text-align: center;
+        }
+        
+        .horoscope-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* رابطہ سیکشن */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-details div {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            width: 30px;
+        }
+        
+        /* فوٹر */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* ریسپانسیو ڈیزائن */
+        @media (max-width: 768px) {
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-links a {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ہیڈر -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">🔆</div>
+                <div class="logo-text">
+                    <h1>دیپ ویلفیئر فاؤنڈیشن</h1>
+                    <p>خدمت انسانیت ہمارا مشن</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- نیویگیشن -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#mission">ہمارا مشن</a></li>
+                <li><a href="#donate">عطیات</a></li>
+                <li><a href="#shopping">آن لائن شاپنگ</a></li>
+                <li><a href="#gallery">گیلری</a></li>
+                <li><a href="#blog">خبریں</a></li>
+                <li><a href="#horoscope">آج کا دن</a></li>
+                <li><a href="#contact">رابطہ کریں</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- ہیرو سیکشن -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>غریبوں کی مدد کے لیے ہمارا سفر</h2>
+            <p>دیپ ویلفیئر فاؤنڈیشن کا مقصد معاشرے کے محروم طبقوں کی بہبود کے لیے کام کرنا ہے۔ ہم علاج معالجہ، تعلیم اور روزگار کے ذریعے لوگوں کی زندگیاں بہتر بنانے کے لیے پرعزم ہیں۔</p>
+            <a href="#donate" class="btn">ابھی عطیہ دیں</a>
+            <a href="#shopping" class="btn">آن لائن شاپنگ کریں</a>
+        </div>
+    </section>
+    
+    <!-- مشن سیکشن -->
+    <section id="mission" class="section">
+        <div class="container">
+            <h2 class="section-title">ہمارا مشن</h2>
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-icon">🏥</div>
+                    <h3>علاج معالجہ</h3>
+                    <p>غریب اور ضرورت مند افراد کو مفت علاج معالجہ کی سہولیات فراہم کرنا تاکہ وہ صحت مند زندگی گزار سکیں۔</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">📚</div>
+                    <h3>تعلیمی مدد</h3>
+                    <p>معاشی طور پر کمزور طلباء کو تعلیمی اخراجات، کتابیں اور اسکالرشپس فراہم کرنا۔</p>
+                </div>
+                <div class="mission-card">
+                    <div class="mission-icon">💼</div>
+                    <h3>روزگار کے مواقع</h3>
+                    <p>بے روزگار نوجوانوں کو ہنر مند بنانا اور انہیں روزگار کے مواقع فراہم کرنا۔</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ڈونیشن سیکشن -->
+    <section id="donate" class="section donation">
+        <div class="container">
+            <h2 class="section-title">عطیات دیں</h2>
+            <p>آپ کا تعاون ہمارے مشن کو جاری رکھنے میں مدد فراہم کرے گا۔ ذیل میں دیے گئے طریقوں سے عطیہ دے کر ہمارے ساتھ جڑیں۔</p>
+            
+            <div class="donation-options">
+                <div class="donation-option">
+                    <h3><i class="fab fa-paypal"></i> PayPal</h3>
+                    <p>telelenker@gmail.com</p>
+                    <a href="https://paypal.me/telelenker" class="btn" style="margin-top: 15px;">عطیہ دیں</a>
+                </div>
+                <div class="donation-option">
+                    <h3><i class="fas fa-mobile-alt"></i> جاز کیش</h3>
+                    <p>0315-2820296</p>
+                </div>
+                <div class="donation-option">
+                    <h3><i class="fab fa-bitcoin"></i> کرپٹو کرنسی</h3>
+                    <p>Bitcoin: 1ABC123XYZ...</p>
+                    <p>Ethereum: 0x123456...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- آن لائن شاپنگ سیکشن -->
+    <section id="shopping" class="section shopping">
+        <div class="container">
+            <h2 class="section-title">آن لائن شاپنگ</h2>
+            <p>اپنی روزمرہ کی خریداری ہمارے پلیٹ فارم کے ذریعے کریں اور ہمارے خیراتی کام میں مدد کریں۔ ہر خریداری پر ہمیں کمیشن ملے گا۔</p>
+            
+            <div class="store-grid">
+                <div class="store-card">
+                    <div class="store-logo">📦</div>
+                    <h3>Amazon</h3>
+                    <p>ہر قسم کی مصنوعات کی خریداری</p>
+                    <a href="https://www.amazon.com" class="btn">خریدیں</a>
+                </div>
+                
+                <div class="store-card">
+                    <div class="store-logo">🛒</div>
+                    <h3>Daraz</h3>
+                    <p>پاکستان کی سب سے بڑی آن لائن مارکیٹ</p>
+                    <a href="https://www.daraz.pk" class="btn">خریدیں</a>
+                </div>
+                
+                <div class="store-card">
+                    <div class="store-logo">📱</div>
+                    <h3>Aliexpress</h3>
+                    <p>بین الاقوامی مصنوعات کی خریداری</p>
+                    <a href="https://www.aliexpress.com" class="btn">خریدیں</a>
+                </div>
+                
+                <div class="store-card">
+                    <div class="store-logo">🛍️</div>
+                    <h3>دیگر اسٹورز</h3>
+                    <p>مختلف آن لائن اسٹورز سے خریداری</p>
+                    <a href="#contact" class="btn">مزید جانیں</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- گیلری سیکشن -->
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">ہماری گیلری</h2>
+            <p>ہمارے خیراتی کام کی جھلکیاں دیکھیں۔ بعد میں ہم مزید تصاویر شامل کریں گے۔</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">تصاویر جلد شامل ہوں گی</div>
+                <div class="gallery-item">تصاویر جلد شامل ہوں گی</div>
+                <div class="gallery-item">تصاویر جلد شامل ہوں گی</div>
+                <div class="gallery-item">تصاویر جلد شامل ہوں گی</div>
+                <div class="gallery-item">تصاویر جلد شامل ہوں گی</div>
+                <div class="gallery-item">تصاویر جلد شامل ہوں گی</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- بلاگ سیکشن -->
+    <section id="blog" class="section">
+        <div class="container">
+            <h2 class="section-title">تازہ خبریں</h2>
+            <p>ہمارے کام کی تازہ ترین معلومات اور اپ ڈیٹس</p>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>نئی طبی کیمپ کا آغاز</h3>
+                        <p>ہم نے کراچی میں ایک مفت طبی کیمپ کا آغاز کیا ہے جہاں غریب مریضوں کا مفت علاج کیا جا رہا ہے۔</p>
+                        <a href="#" class="btn">مزید پڑھیں</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>تعلیمی اسکالرشپ</h3>
+                        <p>100 طلباء کو تعلیمی اسکالرشپ فراہم کی گئی ہیں تاکہ وہ اپنی تعلیم جاری رکھ سکیں۔</p>
+                        <a href="#" class="btn">مزید پڑھیں</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-content">
+                        <h3>روزگار کے مواقع</h3>
+                        <p>ہم نے 50 نوجوانوں کو ہنر مند بنایا اور انہیں روزگار کے مواقع فراہم کیے۔</p>
+                        <a href="#" class="btn">مزید پڑھیں</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ہوروسکوپ سیکشن -->
+    <section id="horoscope" class="section">
+        <div class="container">
+            <h2 class="section-title">آج کا دن</h2>
+            <div class="horoscope-container">
+                <div class="language-selector">
+                    <button class="lang-btn active" onclick="changeLanguage('urdu')">اردو</button>
+                    <button class="lang-btn" onclick="changeLanguage('english')">English</button>
+                </div>
+                
+                <div class="horoscope-content">
+                    <div id="urdu-horoscope">
+                        <h3>آج کی پیشین گوئی</h3>
+                        <p>آج کا دن آپ کے لیے مثبت تبدیلیاں لے کر آئے گا۔ مالی معاملات میں بہتری آئے گی اور کوئی پرانا مسئلہ حل ہوگا۔ دوسروں کی مدد کرنے سے آپ کو داخلی سکون ملے گا۔ صحت کے اعتبار سے دن اچھا گزرے گا۔</p>
+                        <p><strong>نصیحت:</strong> آج کا دن کسی ضرورت مند کی مدد کرنے کے لیے بہترین ہے۔ چھوٹی سی فراخدلی بھی آپ کے لیے برکت کا سبب بن سکتی ہے۔</p>
+                    </div>
+                    
+                    <div id="english-horoscope" style="display: none;">
+                        <h3>Today's Horoscope</h3>
+                        <p>Today will bring positive changes for you. Financial matters will improve and an old problem will be resolved. Helping others will bring you inner peace. Health-wise, the day will be good.</p>
+                        <p><strong>Advice:</strong> Today is perfect for helping someone in need. Even a small act of generosity can become a source of blessings for you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- رابطہ سیکشن -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">رابطہ کریں</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>ہمارا پتا</h3>
+                    <div class="contact-details">
+                        <div>
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>آفس نمبر 580، تیسری منزل، متین سینٹر، شارع فیصل، کراچی</div>
+                        </div>
+                        <div>
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div>0315-2820296</div>
+                        </div>
+                        <div>
+                            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                            <div>0315-2820296</div>
+                        </div>
+                        <div>
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>telelenker@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>ہمیں پیغام بھیجیں</h3>
+                    <div class="contact-details">
+                        <div>
+                            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                            <div>
+                                <a href="https://wa.me/923155280296?text=میں دیپ ویلفیئر فاؤنڈیشن سے رابطہ کرنا چاہتا ہوں" class="btn" style="padding: 10px 20px;">واٹس ایپ</a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div>
+                                <a href="mailto:telelenker@gmail.com?subject=دیپ ویلفیئر فاؤنڈیشن کے بارے میں معلومات" class="btn" style="padding: 10px 20px;">ای میل</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- فوٹر -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo-container">
+                    <div class="logo">🔆</div>
+                    <div class="logo-text">
+                        <h3>دیپ ویلفیئر فاؤنڈیشن</h3>
+                        <p>ہر روشنی ایک امید ہے</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                
+                <p>© 2023 دیپ ویلفیئر فاؤنڈیشن۔ تمام حقوق محفوظ ہیں۔</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // زبان تبدیل کرنے کی فنکشن
+        function changeLanguage(lang) {
+            const urduContent = document.getElementById('urdu-horoscope');
+            const englishContent = document.getElementById('english-horoscope');
+            const buttons = document.querySelectorAll('.lang-btn');
+            
+            if (lang === 'urdu') {
+                urduContent.style.display = 'block';
+                englishContent.style.display = 'none';
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+            } else {
+                urduContent.style.display = 'none';
+                englishContent.style.display = 'block';
+                buttons[0].classList.remove('active');
+                buttons[1].classList.add('active');
+            }
+        }
+        
+        // واٹس ایپ نوٹیفیکیشن (بنیادی)
+        function notifyWhatsApp(visitorInfo) {
+            const phoneNumber = "923152820296";
+            const message = `نیا وزٹر: ${visitorInfo}`;
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        // صفحہ لوڈ ہونے پر نوٹیفائی کریں (بطور مثال)
+        window.addEventListener('load', function() {
+            console.log("سائٹ وزٹ کی گئی۔ نوٹیفیکیشن بھیجی جائے گی۔");
+        });
+    </script>
+</body>
+</html>
